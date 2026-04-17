@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --font-heading: 'Space Grotesk', var(--app-font-sans);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --app-font-sans: 'Outfit', sans-serif;
+  --app-font-serif: Georgia, serif;
+  --app-font-mono: 'Space Mono', monospace;
+  --radius: 0.5rem;
+  
+  /* Enforce dark mode variables everywhere since it's dark-mode only */
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+
+  --border: 240 10% 12%;
+  
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 98%;
+  --card-border: 240 10% 12%;
+
+  --popover: 240 10% 6%;
+  --popover-foreground: 0 0% 98%;
+  --popover-border: 240 10% 12%;
+
+  --primary: 38 90% 55%;
+  --primary-foreground: 0 0% 10%;
+  --primary-border: 38 90% 45%;
+
+  --secondary: 240 10% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --secondary-border: 240 10% 18%;
+
+  --muted: 240 10% 12%;
+  --muted-foreground: 240 5% 65%;
+  --muted-border: 240 10% 18%;
+
+  --accent: 38 90% 55%;
+  --accent-foreground: 0 0% 10%;
+  --accent-border: 38 90% 45%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --destructive-border: 0 84% 50%;
+
+  --input: 240 10% 16%;
+  --ring: 38 90% 55%;
+  
+  color-scheme: dark;
+}
+
+.dark {
+  /* Same as above to ensure it works if toggle exists */
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+
+  --border: 240 10% 12%;
+  
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 98%;
+  --card-border: 240 10% 12%;
+
+  --popover: 240 10% 6%;
+  --popover-foreground: 0 0% 98%;
+  --popover-border: 240 10% 12%;
+
+  --primary: 38 90% 55%;
+  --primary-foreground: 0 0% 10%;
+
+  --secondary: 240 10% 12%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 240 10% 12%;
+  --muted-foreground: 240 5% 65%;
+
+  --accent: 38 90% 55%;
+  --accent-foreground: 0 0% 10%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --input: 240 10% 16%;
+  --ring: 38 90% 55%;
+  
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
+
+.tier-badge-ht1 { @apply bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold border-yellow-300; box-shadow: 0 0 10px rgba(250, 204, 21, 0.3); }
+.tier-badge-ht2 { @apply bg-gradient-to-r from-orange-400 to-orange-500 text-black font-bold border-orange-300; }
+.tier-badge-ht3 { @apply bg-gradient-to-r from-orange-500 to-orange-600 text-black font-bold border-orange-400; }
+.tier-badge-lt1 { @apply bg-gradient-to-r from-green-400 to-green-500 text-black font-bold border-green-300; }
+.tier-badge-lt2 { @apply bg-gradient-to-r from-teal-400 to-teal-500 text-black font-bold border-teal-300; }
+.tier-badge-lt3 { @apply bg-gradient-to-r from-blue-400 to-blue-500 text-black font-bold border-blue-300; }
+.tier-badge-lt4 { @apply bg-gradient-to-r from-slate-400 to-slate-500 text-black font-bold border-slate-300; }
+.tier-badge-unranked { @apply bg-gradient-to-r from-zinc-700 to-zinc-800 text-zinc-300 font-bold border-zinc-600; }
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600;
+}
+
+.glass-panel {
+  @apply bg-background/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+}
